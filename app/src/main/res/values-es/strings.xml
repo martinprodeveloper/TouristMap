@@ -14,4 +14,6 @@
     <string name="home_detail_attractions">ATRACCIONES</string>
     <string name="home_detail_attractions_format">%1$s, %2$s, %3$s, %4$s</string>
     <string name="home_detail_go_to_map">IR AL MAPA</string>
+
+    <string name="google_map_api_key">key</string>
 </resources>
