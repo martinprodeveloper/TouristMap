@@ -1,4 +1,4 @@
-package com.martinprodeveloper.touristmap
+package com.martinprodeveloper.touristmap.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,8 +9,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.martinprodeveloper.touristmap.BuildConfig
+import com.martinprodeveloper.touristmap.ui.home.HomeActivity
+import com.martinprodeveloper.touristmap.R
 import com.martinprodeveloper.touristmap.databinding.ActivitySplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding
@@ -49,7 +54,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun goToHome() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         finish()
     }
