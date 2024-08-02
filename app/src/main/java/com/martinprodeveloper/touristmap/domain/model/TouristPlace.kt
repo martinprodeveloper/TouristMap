@@ -16,8 +16,8 @@ data class TouristPlace(
 }
 
 data class Location(
-    var lat: String? = null,
-    var lng: String? = null
+    var lat: Double? = null,
+    var lng: Double? = null
 )
 
 data class Attractions(
