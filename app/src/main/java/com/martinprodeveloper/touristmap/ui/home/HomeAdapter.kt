@@ -11,7 +11,7 @@ import com.martinprodeveloper.touristmap.domain.model.TouristPlace
 import com.martinprodeveloper.touristmap.ui.home.detail.HomeDetailActivity
 
 class HomeAdapter(
-    private var touristPlaces: List<TouristPlace>,
+    private var touristPlaces: List<TouristPlace>? = null,
 ) : RecyclerView.Adapter<HomeAdapter.TouristPlaceViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TouristPlaceViewHolder {
@@ -20,13 +20,15 @@ class HomeAdapter(
     }
 
     override fun onBindViewHolder(holder: TouristPlaceViewHolder, position: Int) {
-        val touristPlace = touristPlaces[position]
-        holder.bind(touristPlace)
+        val touristPlace = touristPlaces?.get(position)
+        if (touristPlace != null) {
+            holder.bind(touristPlace)
+        }
     }
 
-    override fun getItemCount(): Int = touristPlaces.size
+    override fun getItemCount(): Int = touristPlaces?.size ?: 0
 
-    fun updateTouristPlacesList(newTouristPlaces: List<TouristPlace>) {
+    fun updateTouristPlacesList(newTouristPlaces: List<TouristPlace>?) {
         touristPlaces = newTouristPlaces
         notifyDataSetChanged()
     }
@@ -35,17 +37,19 @@ class HomeAdapter(
         private val binding: ItemTouristPlaceCardBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(touristPlace: TouristPlace) {
+        fun bind(touristPlace: TouristPlace?) {
             Glide.with(binding.root.context)
-                .load(touristPlace.imageUrl)
+                .load(touristPlace?.imageUrl)
                 .placeholder(R.drawable.ic_tourist_place_image_placeholder)
                 .error(R.drawable.ic_tourist_place_image_placeholder)
                 .into(binding.ivTouristPlaceImage)
 
-            binding.tvTouristPlaceName.text = touristPlace.name
-            binding.tvTouristPlaceDescription.text = touristPlace.description
+            binding.tvTouristPlaceName.text = touristPlace?.name
+            binding.tvTouristPlaceDescription.text = touristPlace?.description
             binding.cvTouristPlace.setOnClickListener {
-                goToDetail(touristPlace)
+                if (touristPlace != null) {
+                    goToDetail(touristPlace)
+                }
             }
         }
 
