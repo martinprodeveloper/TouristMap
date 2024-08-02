@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">TouristMap</string>
+    <string name="app_name">Tourist Map</string>
+    <string name="app_environment">Environment:</string>
 </resources>
