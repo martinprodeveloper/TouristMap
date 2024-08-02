@@ -1,7 +1,7 @@
 <resources>
     <!-- App -->
     <string name="app_name">Tourist Map</string>
-    <string name="app_environment">Environment:</string>
+    <string name="app_environment">Ambiente:</string>
 
     <!-- Home -->
     <string name="home_welcome">Hola, viajero!</string>

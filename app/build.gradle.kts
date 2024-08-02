@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.jetbrains.kotlin.kapt)
+    alias(libs.plugins.dagger.hilt.android)
 }
 
 android {
@@ -57,19 +58,19 @@ android {
             applicationIdSuffix = ".dev"
             versionNameSuffix = "-dev"
             manifestPlaceholders["marca_prefix"] = "dev-TouristMap"
-            buildConfigField("String", "BASE_URL", "\"https://demo7832319.mockable.io/\"")
+            buildConfigField("String", "BASE_URL", "\"http://demo7832319.mockable.io/\"")
         }
         create("qa") {
             dimension = "env"
             applicationIdSuffix = ".qa"
             versionNameSuffix = "-qa"
             manifestPlaceholders["marca_prefix"] = "qa-TouristMap"
-            buildConfigField("String", "BASE_URL", "\"https://demo7832319.mockable.io/\"")
+            buildConfigField("String", "BASE_URL", "\"http://demo7832319.mockable.io/\"")
         }
         create("prod") {
             dimension = "env"
             manifestPlaceholders["marca_prefix"] = "Tourist Map"
-            buildConfigField("String", "BASE_URL", "\"https://demo7832319.mockable.io/\"")
+            buildConfigField("String", "BASE_URL", "\"http://demo7832319.mockable.io/\"")
         }
     }
 
@@ -99,6 +100,19 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.fragment)
+
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.gson)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.glide)
+    kapt(libs.glide.compiler)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
